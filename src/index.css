@@ -5,6 +5,10 @@
   margin: 20px;
 }
 
+.active {
+  text-decoration: underline;
+}
+
 .logo {
   display: flex;
 }
@@ -15,10 +19,14 @@ img {
 
 .nav-link {
   display: flex;
-  color: #4386bf;
   list-style: none;
   gap: 20px;
   align-items: center;
+}
+
+a {
+  color: #4386bf;
+  text-decoration: none;
 }
 
 .li {
