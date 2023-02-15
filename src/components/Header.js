@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
-import Rockets from './Rockets';
+import RenderRockets from './Rockets';
 import Missions from './missions';
 import MyProfile from './myProfile';
 import Img from '../Logo.png';
@@ -18,7 +18,7 @@ const Header = () => (
       <li className='li'><NavLink to="/MyProfile">My Profile</NavLink></li>
     </nav>
     <Routes>
-        <Route path="/" element={<Rockets />} />
+        <Route path="/" element={<RenderRockets />} />
         <Route path="/missions" element={<Missions />} />
         <Route path="/myProfile" element={<MyProfile />} />
       </Routes>
