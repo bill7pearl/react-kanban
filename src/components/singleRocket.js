@@ -1,3 +1,5 @@
+import React from 'react';
+
 const SingleRocket = ({
   /* eslint-disable react/prop-types */
   title, description, image,
@@ -5,13 +7,13 @@ const SingleRocket = ({
   
   return (
     <div>
-      <div>
-        <img src={image} alt={title} />
+        <div>
+         <img src={image} alt={title} />
+        </div>
         <div>
           <h3>{title}</h3>
           <p>{description}</p>
         </div>
-      </div>
     </div>
   );
 };
