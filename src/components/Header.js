@@ -1,8 +1,5 @@
 import React from 'react';
-import { NavLink, Route, Routes } from 'react-router-dom';
-import Rockets from './Rockets';
-import Missions from './missions';
-import MyProfile from './myProfile';
+import { NavLink } from 'react-router-dom';
 import Img from '../Logo.png';
 
 const Header = () => (
@@ -15,15 +12,9 @@ const Header = () => (
     <nav className="nav-link">
       <li><NavLink to="/">Rockets</NavLink></li>
       <li><NavLink to="/missions">Missions</NavLink></li>
-      <li className='li'><NavLink to="/MyProfile">My Profile</NavLink></li>
+      <li className='li'><NavLink to="/profile">My Profile</NavLink></li>
     </nav>
-    <Routes>
-        <Route path="/" element={<Rockets />} />
-        <Route path="/missions" element={<Missions />} />
-        <Route path="/myProfile" element={<MyProfile />} />
-      </Routes>
     </div>
- 
   </div>
 );
 
