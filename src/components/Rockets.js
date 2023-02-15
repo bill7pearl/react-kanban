@@ -12,7 +12,7 @@ const RenderRockets = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <div>
+    <div className='rockets-container'>
       {rockets && rockets.map((rocket) => (
         <SingleRocket
           image={rocket.image}

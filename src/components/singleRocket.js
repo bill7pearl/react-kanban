@@ -6,7 +6,7 @@ const SingleRocket = ({
 }) => {
   
   return (
-    <div>
+    <div className='rockets'>
         <div>
          <img src={image} alt={title} />
         </div>
