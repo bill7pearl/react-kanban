@@ -1,6 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const ROCKETS_API = 'https://api.spacexdata.com/v4/rockets';
+const FETCH_ROCKETS = 'FETCH_ROCKETS';
+const initialState = { rockets:[] }
 
 export const getRockets = async () => {
   const response = await fetch(ROCKETS_API);
@@ -10,16 +12,26 @@ export const getRockets = async () => {
     name: item.rocket_name,
     description: item.description,
     image: item.flickr_images[0],
+    reserved: false,
   }));
   return rockets;
 };
 
+export const fetchRockets = createAsyncThunk(
+  FETCH_ROCKETS,
+  async (post, thunkAPI) => {
+    const payload = await getRockets();
+    thunkAPI.dispatch({ type: FETCH_ROCKETS, payload });
+  },
+);
 
-const rocketsSlice = createSlice(({
-    name: "rockets",
-    initialState: {
-        rockets: [],
-    },
-}));
+const rocketReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_ROCKETS:
+      return { ...state, rocket: action.payload };
+    default:
+      return state;
+  }
+};
 
-export default rocketsSlice.reducer;
+export default rocketReducer;
