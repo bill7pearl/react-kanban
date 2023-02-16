@@ -33,3 +33,25 @@ a {
   border-left: 1px solid #e5e5e5;
   padding: 5px;
 }
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.top {
+  padding: 0 20px;
+}
+
+.mission {
+  width: 80%;
+}
+
+.rocket {
+  width: 80%;
+}
+
+.li-li {
+  list-style: none;
+  padding: 0 20px;
+}
