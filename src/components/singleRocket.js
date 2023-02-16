@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SingleRocket = ({
-  /* eslint-disable react/prop-types */
+  // eslint-disable-next-line react/prop-types
   title, description, image,
 }) => (
   <div className="rockets">

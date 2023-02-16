@@ -1,43 +1,89 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const url = 'https://api.spacexdata.com/v3/missions';
+const MISSIONS_API = 'https://api.spacexdata.com/v3/missions';
+const FETCH_MISSIONS = 'FETCH_MISSIONS';
+const JOIN_MISSION = 'JOIN_MISSION';
+const LEAVE_MISSION = 'LEAVE_MISSION';
+const initialState = { mission: [] };
 
-const initialState = [];
-const FETCH_MISSION = 'REACT-KANBAN/Missions/FETCH_MISSION';
-const JOIN_MISSION = 'REACT-KANBAN/Missions/JOIN_MISSION';
+export const getMissions = async () => {
+  const response = await fetch(MISSIONS_API);
+  const data = await response.json();
+  const missions = data.map((item) => ({
+    mission_id: item.mission_id,
+    mission_name: item.mission_name,
+    description: item.description,
+  }));
+  return missions;
+};
 
-const missionsReducer = (state = initialState, action) => {
+export const fetchMissions = createAsyncThunk(
+  FETCH_MISSIONS,
+  async (post, thunkAPI) => {
+    const payload = await getMissions();
+    thunkAPI.dispatch({ type: FETCH_MISSIONS, payload });
+  },
+);
+
+/* export const fetchMissions = createAsyncThunk(
+  FETCH_MISSIONS,
+  async (post, { dispatch }) => {
+    const response = await fetch(MISSIONS_API);
+    const jsonResult = await response.json();
+    const missions = await jsonResult.map((item) => ({
+      mission_id: item.mission_id,
+      mission_name: item.mission_name,
+      description: item.description,
+    }));
+    dispatch({ type: FETCH_MISSIONS, missions });
+  },
+); */
+
+export const joinMission = (id) => ({
+  type: JOIN_MISSION,
+  id,
+});
+
+export const leaveMission = (id) => ({
+  type: LEAVE_MISSION,
+  id,
+});
+
+const missionReducer = (state = initialState, action) => {
   switch (action.type) {
-    case `${FETCH_MISSION}/fulfilled`:
-      return action.payload.data;
+    case FETCH_MISSIONS:
+      return { ...state, mission: action.payload };
     case JOIN_MISSION:
-      return state.map((mission) => (mission.id === action.payload
-        ? { ...mission, joinmission: !mission.joinmission }
-        : mission
-      ));
+      return state.map((mission) => {
+        if (mission.mission_id !== action.id) return mission;
+        return { ...mission, reserved: true };
+      });
+    case LEAVE_MISSION:
+      return state.map((mission) => {
+        if (mission.mission_id !== action.id) return mission;
+        return { ...mission, reserved: false };
+      });
     default:
       return state;
   }
 };
 
-export const fetchMission = createAsyncThunk(FETCH_MISSION, async () => {
-  const response = fetch(url);
-  const data = await response.json();
-  const missions = [];
-  data.forEach((mission) => {
-    missions.push({
-      mission_id: mission.mission_id,
-      mission_name: mission.mission_name,
-      description: mission.description,
-      reserved: false,
-    });
-  });
-  return (data);
-});
+/* const missionReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_MISSIONS:
+      return action.missions;
+    case JOIN_MISSION:
+      return state.map((mission) => {
+        if (mission.mission_id !== action.id) return mission;
+        return { ...mission, reserved: true };
+      });
+    case LEAVE_MISSION:
+      return state.map((mission) => {
+        if (mission.mission_id !== action.id) return mission;
+        return { ...mission, reserved: false };
+      });
+    default: return state;
+  }
+}; */
 
-export const joinMission = (id) => ({
-  type: JOIN_MISSION,
-  payload: id,
-});
-
-export default missionsReducer;
+export default missionReducer;

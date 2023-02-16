@@ -1,13 +1,13 @@
 import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import rocketReducer from './rockets/rockets';
-import missionsReducer from './missions/missions';
+import missionReducer from './missions/missions';
 
 const store = configureStore(
   {
     reducer: {
       rockets: rocketReducer,
-      missions: missionsReducer,
+      missions: missionReducer,
     },
   },
   applyMiddleware(thunk),
