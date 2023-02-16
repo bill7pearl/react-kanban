@@ -14,6 +14,7 @@ const RenderRockets = () => {
     <div className="rockets-container">
       {rockets && rockets.map((rocket) => (
         <SingleRocket
+          key={rocket.id}
           image={rocket.image}
           title={rocket.name}
           description={rocket.description}
