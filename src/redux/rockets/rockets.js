@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const ROCKETS_API = 'https://api.spacexdata.com/v4/rockets';
 const FETCH_ROCKETS = 'FETCH_ROCKETS';
-const initialState = { rocket:[] }
+const initialState = { rocket: [] };
 
 export const getRockets = async () => {
   const response = await fetch(ROCKETS_API);

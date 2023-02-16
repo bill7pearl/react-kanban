@@ -4,15 +4,14 @@ import SingleRocket from './singleRocket';
 import { fetchRockets } from '../redux/rockets/rockets';
 
 const RenderRockets = () => {
-
   const rockets = useSelector((state) => state.rockets.rocket);
   const dispatch = useDispatch();
   useEffect(() => {
-      dispatch(fetchRockets())
+    dispatch(fetchRockets());
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
   return (
-    <div className='rockets-container'>
+    <div className="rockets-container">
       {rockets && rockets.map((rocket) => (
         <SingleRocket
           image={rocket.image}
@@ -22,6 +21,6 @@ const RenderRockets = () => {
       ))}
     </div>
   );
-}
+};
 
 export default RenderRockets;
