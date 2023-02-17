@@ -4,7 +4,7 @@ import { fetchMissions } from '../redux/missions/missions';
 import SingleMission from './singleMission';
 
 // let indicator = false;
-const RenderMissions = () => {
+const Missions = () => {
   const dispatch = useDispatch();
   const missions = useSelector((state) => state.missions.mission);
 
@@ -35,4 +35,4 @@ const RenderMissions = () => {
     </main>
   );
 };
-export default RenderMissions;
+export default Missions;

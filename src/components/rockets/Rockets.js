@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import SingleRocket from './singleRocket';
-import { fetchRockets } from '../redux/rockets/rockets';
+import { fetchRockets } from '../../redux/rockets/rockets';
 
-const RenderRockets = () => {
+const Rockets = () => {
   const rockets = useSelector((state) => state.rockets.rocket);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -24,4 +24,4 @@ const RenderRockets = () => {
   );
 };
 
-export default RenderRockets;
+export default Rockets;

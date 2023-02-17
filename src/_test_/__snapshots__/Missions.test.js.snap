@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Missions renders Missions component 1`] = `
+<main>
+  <nav>
+    <h4>
+      Mission
+    </h4>
+    <h4>
+      Description
+    </h4>
+    <h4>
+      Status
+    </h4>
+    <button
+      type="submit"
+    >
+      Join Mission
+    </button>
+  </nav>
+  <div />
+</main>
+`;

@@ -1,0 +1,17 @@
+.rockets{
+    display: flex;
+    align-items: center;
+    border: red;
+  }
+  
+  .img-rocket {
+    max-height: 500px;
+    max-width: 470px;
+    border: red;
+  }
+  
+  .desc {
+    padding: 20px;
+    border: red;
+    width: 100%;
+  }
