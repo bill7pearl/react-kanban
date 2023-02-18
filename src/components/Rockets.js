@@ -8,19 +8,21 @@ const RenderRockets = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRockets());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
   return (
-    <div className="rockets-container">
+    <main className="rockets-container">
       {rockets && rockets.map((rocket) => (
         <SingleRocket
           key={rocket.id}
           image={rocket.image}
           title={rocket.name}
+          id={rocket.id}
           description={rocket.description}
+          reserved={rocket.reserved}
+          confirmedReservation={rocket.reserved ? 'Reserved' : ''}
         />
       ))}
-    </div>
+    </main>
   );
 };
 

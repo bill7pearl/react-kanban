@@ -2,14 +2,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const ROCKETS_API = 'https://api.spacexdata.com/v4/rockets';
 const FETCH_ROCKETS = 'FETCH_ROCKETS';
-const initialState = { rocket: [] };
+const RESERVED_ROCKETS = 'RESERVED_ROCKETS';
 
-export const getRockets = async () => {
-  const response = await fetch(ROCKETS_API);
-  const data = await response.json();
-  const rockets = data.map((item) => ({
-    id: item.rocket_id,
-    name: item.rocket_name,
+const getRockets = async () => {
+  const res = await fetch(ROCKETS_API);
+  const results = await res.json();
+  const rockets = results.map((item) => ({
+    id: item.id,
+    name: item.name,
     description: item.description,
     image: item.flickr_images[0],
     reserved: false,
@@ -25,9 +25,25 @@ export const fetchRockets = createAsyncThunk(
   },
 );
 
-const rocketReducer = (state = initialState, action) => {
+export const reserveRocket = (id) => (dispatch, getState) => {
+  const state = getState().rockets.rocket;
+
+  const reservedRockets = state.map((rocket) => {
+    if (rocket.id !== id) return rocket;
+    const reserved = !rocket.reserved;
+    return { ...rocket, reserved };
+  });
+  dispatch({
+    type: RESERVED_ROCKETS,
+    payload: reservedRockets,
+  });
+};
+
+const rocketReducer = (state = { rocket: [] }, action) => {
   switch (action.type) {
     case FETCH_ROCKETS:
+      return { ...state, rocket: action.payload };
+    case RESERVED_ROCKETS:
       return { ...state, rocket: action.payload };
     default:
       return state;
