@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Display missions component test Tests missions page rendering and fetching data from API 1`] = `null`;

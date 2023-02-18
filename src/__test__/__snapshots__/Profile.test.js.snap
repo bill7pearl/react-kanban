@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rockets rendering and displaying correctly 1`] = `
+<main
+  className="rocket-profile"
+>
+  <h2
+    className="profile-titles"
+  >
+    My Rockets
+  </h2>
+  <table
+    className="profile-table"
+  >
+    <tbody />
+  </table>
+</main>
+`;
