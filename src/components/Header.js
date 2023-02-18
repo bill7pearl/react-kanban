@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Img from '../Logo.png';
 
 const Header = () => (
-  <div className="header-top">
+  <main className="header-top">
     <div className="logo">
       <img className="img" src={Img} alt="logo" />
       <h1>Space Travelers Hub</h1>
@@ -15,7 +15,7 @@ const Header = () => (
         <li className="li"><NavLink to="/profile">My Profile</NavLink></li>
       </nav>
     </div>
-  </div>
+  </main>
 );
 
 export default Header;

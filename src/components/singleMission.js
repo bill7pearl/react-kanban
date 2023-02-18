@@ -20,13 +20,13 @@ const SingleMission = (props) => {
 
   return (
     <tr id={id}>
-      <td>{title}</td>
+      <td className="missions-header">{title}</td>
       <td>{description}</td>
       <td>
-        { reserved ? <button type="button" className="active-member">ACTIVE MEMBER</button> : <button type="button" className="not-member" size="sm">NOT A MEMBER </button> }
+        { reserved ? <button type="button" className="active-member">Active Member</button> : <button type="button" className="not-member">NOT A MEMBER </button> }
       </td>
-      <td className="btn-container">
-        { reserved ? <button type="button" className="leave-mission" onClick={joinBtn}>LEAVE MISSION</button> : <button type="button" className="join-mission" onClick={joinBtn}>JOIN MISSION</button> }
+      <td>
+        { reserved ? <button type="button" className="leave-mission" onClick={joinBtn}>Leave Mission</button> : <button type="button" className="join-mission" onClick={joinBtn}>Join Mission</button> }
       </td>
     </tr>
   );
