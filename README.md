@@ -153,6 +153,10 @@ You can deploy this project using:
 
 👤 **Author2**
 
+- GitHub: [@githubhandle](https://github.com/bill7pearl)
+- Twitter: [@twitterhandle](https://twitter.com/BillChami)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/billal-chami-263497194/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
