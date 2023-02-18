@@ -5,15 +5,15 @@ export const MissionsProfile = () => {
   const missions = useSelector((state) => state.missions);
 
   return (
-    <main className="mission-table">
-      <h2>My Missions</h2>
-      <table>
+    <main className="mission-profile">
+      <h2 className="profile-titles">My Missions</h2>
+      <table className="profile-table">
         <tbody>
           {missions && missions
             .filter((obj) => obj.reserved)
             .map((item) => (
-              <tr key={item.mission_id}>
-                <td>{item.mission_name}</td>
+              <tr className="profile-data" key={item.mission_id}>
+                <td className="profile-data">{item.mission_name}</td>
               </tr>
             ))}
         </tbody>
@@ -27,14 +27,14 @@ export const RocketsProfile = () => {
   const reservedRocket = Array.isArray(rockets) ? rockets.filter((rocket) => rocket.reserved) : [];
 
   return (
-    <main>
-      <h2>My Rockets</h2>
-      <table>
+    <main className="rocket-profile">
+      <h2 className="profile-titles">My Rockets</h2>
+      <table className="profile-table">
         <tbody>
           {
               reservedRocket.map((rocket) => (
-                <tr key={rocket.id}>
-                  <td>{rocket.name}</td>
+                <tr className="profile-data" key={rocket.id}>
+                  <td className="profile-data">{rocket.name}</td>
                 </tr>
               ))
   }

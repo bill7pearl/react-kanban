@@ -12,32 +12,30 @@ const SingleRocket = ({
   };
 
   return (
-    <main>
-      <div className="rocketContainer">
-        <img src={image} alt={title} />
-        <div className="rocketInfo">
-          <h3>{title}</h3>
-          {
+    <main className="single-rocket">
+      <div className="rocket-img"><img className="rocket-img-size" src={image} alt={title} /></div>
+      <div className="rocket-details">
+        <h3>{title}</h3>
+        {
           reserved
             ? (
               <p>
-                <span>{confirmedReservation}</span>
+                <span className="reserved">{confirmedReservation}</span>
                 {description}
               </p>
             )
             : (
               <p>
-                <span>{confirmedReservation}</span>
+                <span className="reserved">{confirmedReservation}</span>
                 {description}
               </p>
             )
         }
-          {
+        {
           reserved
-            ? <button className="reserveBtn" type="button" onClick={reserveBtn}>Cancel Reservation</button>
-            : <button className="reserveBtn" type="button" onClick={reserveBtn}>Reserve Rocket</button>
+            ? <button className="cancel-btn" type="button" onClick={reserveBtn}>Cancel Reservation</button>
+            : <button className="reserve-btn" type="button" onClick={reserveBtn}>Reserve Rocket</button>
         }
-        </div>
       </div>
     </main>
   );

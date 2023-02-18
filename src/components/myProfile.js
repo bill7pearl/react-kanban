@@ -2,10 +2,10 @@ import React from 'react';
 import { MissionsProfile, RocketsProfile } from './Profile';
 
 const MyProfile = () => (
-  <div>
+  <main className="profile-table">
     <MissionsProfile />
     <RocketsProfile />
-  </div>
+  </main>
 
 );
 
